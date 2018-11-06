@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "vigenere.h"
+#include "vigenereLib.h"
 
 char* vigenereEncrypt(char* text, char* key)
 {
