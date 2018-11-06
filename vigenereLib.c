@@ -3,41 +3,48 @@
 #include <string.h>
 #include "vigenereLib.h"
 
+/*External variables*/
+/*The multiplied key*/
+char key[50];
+/*The text after encryption was performed*/
+char enc[50];
+/*The text after decryption was performed*/
+char dec[50];
+
+/*Public functions*/
+/*Function to perform encryption*/
 char* vigenereEncrypt(char* text, char* key)
 {
-    char* cipher_text;
-
     for (int i = 0; i < strlen(text); i++)
     {
-        int x = (text[i] + key[i]) %26 + 'A';
+        char x = (text[i] + key[i]) %26 + 'A';
 
-        cipher_text[i] = x;
+        enc[i] = x;
     }
-    return cipher_text;
+    return enc;
 }
-
+/*Function to perform decryption*/
 char* vigenereDecrypt(char* text, char* key)
 {
-    char* orig_text;
-
     for (int i = 0 ; i < strlen(text); i++)
     {
-        int x = (text[i] - key[i] + 26) %26 + 'A';
+        char x = (text[i] - key[i] + 26) %26 + 'A';
 
-        orig_text[i] = x;
+        dec[i] = x;
     }
-    return orig_text;
+    return dec;
 }
 
 /*This function multiplies the key in order to have the same length as the message*/
 char* vigenereKey(char* text, char* oneWordKey)
 {
     int x = strlen(oneWordKey);
-    char key[50];
+    int  i = 0, j = 0;
 
-    int  i = 0, j=0;
-    while(strlen(text) > strlen(key)){
-        if (strlen(oneWordKey) == i){
+    while(strlen(text) > strlen(key))
+    {
+        if (strlen(oneWordKey) == i)
+        {
             i = 0;
         }
         key[j] = oneWordKey[i];
