@@ -2,7 +2,7 @@
 #define BIFIDLIB_H_INCLUDED
 
 #define MAX_VALUE 255
-#define MAX_VALUE 255
+
 struct position{
     int row;
     int column;
